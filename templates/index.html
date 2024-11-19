@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Heart Disease Prediction</h2>
+    <form id="heartForm">
+        <label for="age">Age: <div class="tooltip">!
+            <span class="tooltiptext">Usia pasien dalam tahun.</span>
+        </div></label>
+        <input type="number" id="age" name="age" required placeholder="Enter your age">
+        
+
+        <label for="sex">Sex: <div class="tooltip">!
+            <span class="tooltiptext">Jenis kelamin pasien (1: Pria, 0: Wanita).</span>
+        </div></label>
+        <select id="sex" name="sex" required>
+            <option value="" disabled selected>Select your sex</option>
+            <option value="1">Male (1)</option>
+            <option value="0">Female (0)</option>
+        </select>
+        
+
+        <label for="dataset">Dataset: <div class="tooltip">!
+            <span class="tooltiptext">Sumber dataset pasien (1: Cleveland, 2: Hungary, dll).</span>
+        </div></label>
+        <select id="dataset" name="dataset" required>
+            <option value="" disabled selected>Select dataset location</option>
+            <option value="1">Cleveland (1)</option>
+            <option value="2">Hungary (2)</option>
+            <option value="3">Switzerland (3)</option>
+            <option value="4">VA Long Beach (4)</option>
+        </select>
+        
+
+        <label for="cp">Chest Pain Type (CP): <div class="tooltip">!
+            <span class="tooltiptext">Jenis nyeri dada pasien (1: Angina Tipikal, dll).</span>
+        </div></label>
+        <select id="cp" name="cp" required>
+            <option value="" disabled selected>Select chest pain type</option>
+            <option value="1">Typical Angina (1)</option>
+            <option value="2">Atypical Angina (2)</option>
+            <option value="3">Non-anginal (3)</option>
+            <option value="4">Asymptomatic (4)</option>
+        </select>
+        
+
+        <label for="trestbps">Resting Blood Pressure (trestbps): <div class="tooltip">!
+            <span class="tooltiptext">Tekanan darah pasien saat istirahat (mmHg).</span>
+        </div></label>
+        <input type="number" id="trestbps" name="trestbps" required placeholder="Enter resting blood pressure in mmHg">
+        
+
+        <label for="chol">Cholesterol (chol): <div class="tooltip">!
+            <span class="tooltiptext">Kadar kolesterol total pasien (mg/dl).</span>
+        </div></label>
+        <input type="number" id="chol" name="chol" required placeholder="Enter cholesterol level in mg/dl">
+        
+
+        <label for="fbs">Fasting Blood Sugar > 120 mg/dl (fbs): <div class="tooltip">!
+            <span class="tooltiptext">Kadar gula darah puasa (> 120 mg/dl, 1: Ya, 0: Tidak).</span>
+        </div></label>
+        <select id="fbs" name="fbs" required>
+            <option value="" disabled selected>Select fasting blood sugar status</option>
+            <option value="1">True (1)</option>
+            <option value="0">False (0)</option>
+        </select>
+        
+
+        <label for="restecg">Resting ECG Results (restecg): <div class="tooltip">!
+            <span class="tooltiptext">Hasil rekam jantung pasien (0: Normal, dll).</span>
+        </div></label>
+        <select id="restecg" name="restecg" required>
+            <option value="" disabled selected>Select ECG result</option>
+            <option value="0">Normal (0)</option>
+            <option value="1">ST-T abnormality (1)</option>
+            <option value="2">Left Ventricular Hypertrophy (2)</option>
+        </select>
+        
+
+        <label for="thalch">Maximum Heart Rate Achieved (thalch): <div class="tooltip">!
+            <span class="tooltiptext">Detak jantung maksimum yang dicapai pasien.</span>
+        </div></label>
+        <input type="number" id="thalch" name="thalch" required placeholder="Enter max heart rate achieved">
+        
+
+        <label for="exang">Exercise Induced Angina (exang): <div class="tooltip">!
+            <span class="tooltiptext">Apakah nyeri dada dipicu oleh aktivitas fisik (1: Ya, 0: Tidak).</span>
+        </div></label>
+        <select id="exang" name="exang" required>
+            <option value="" disabled selected>Select exercise induced angina status</option>
+            <option value="1">Yes (1)</option>
+            <option value="0">No (0)</option>
+        </select>
+        
+
+        <label for="oldpeak">ST Depression Induced (oldpeak): <div class="tooltip">!
+            <span class="tooltiptext">Depresi segmen ST akibat olahraga (mm).</span>
+        </div></label>
+        <input type="number" step="0.1" id="oldpeak" name="oldpeak" required placeholder="Enter ST depression value">
+        
+
+        <label for="slope">Slope of ST Segment (slope): <div class="tooltip">!
+            <span class="tooltiptext">Kemiringan segmen ST pada EKG (1: Naik, dll).</span>
+        </div></label>
+        <select id="slope" name="slope" required>
+            <option value="" disabled selected>Select ST segment slope</option>
+            <option value="1">Upsloping (1)</option>
+            <option value="2">Flat (2)</option>
+            <option value="3">Downsloping (3)</option>
+        </select>
+        
+
+        <label for="ca">Number of Major Vessels (ca) (0-3): <div class="tooltip">!
+            <span class="tooltiptext">Jumlah pembuluh darah besar yang terdeteksi (0-3).</span>
+        </div></label>
+        <select id="ca" name="ca" required>
+            <option value="" disabled selected>Select number of major vessels</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        
+
+        <label for="thal">Thal: <div class="tooltip">!
+            <span class="tooltiptext">Jenis thalasemia (1: Normal, dll).</span>
+        </div></label>
+        <select id="thal" name="thal" required>
+            <option value="" disabled selected>Select Thalassemia type</option>
+            <option value="1">Normal (1)</option>
+            <option value="2">Fixed Defect (2)</option>
+            <option value="3">Reversible Defect (3)</option>
+        </select>
+        
+    <span class="info-icon" title="Jenis thalassemia."></span>
+        <div class="error" id="formError"></div>
+
+        <button type="button" class="btn" id="predictBtn">Predict</button>
+    </form>
+
+    <div class="result" id="result"></div>
+</div>
+
+<!-- Notification pop-up -->
+<div class="overlay" id="overlay"></div>
+<div class="notification" id="notification">
+    <h3 id="notificationMessage">Prediction Result: </h3>
+    <button onclick="closeNotification()">Close</button>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
